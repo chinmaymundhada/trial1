@@ -1,0 +1,34 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.2",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "MNN Ashram",
+            "size": "Medium",
+            "weight": "Bolder"
+        },
+        {
+            "type": "TextBlock",
+            "text": "ACCOMODATION",
+            "wrap": true
+        },
+        {
+            "type": "ImageSet",
+            "imageSize": "large",
+            "images": [
+                {
+                    "type": "Image",
+                    "url": "https://www.tejgyan.org/homeassets/abouttgf/images/theAshram.png",
+                    "size": "large"
+                }
+            ]
+        },
+        {
+            "type": "TextBlock",
+            "text": "At the Ashram, residents will be oriented to lead an eco-friendly lifestyle that has eco-thinking as the inherent part of everyday life. Eco-thinking signifies treating Earth as an echo of our bodies When we treat Earth as an extension of our body, we take good care of it, just as we take care of our body. Just as we would not overburden our body or waste our body's resources, we must become overtly aware of restoring and maintaining the balance in the Earth's biosphere in and through our daily interactions with it Ashram inmates will bring ecological integrity o into their way of life by",
+            "wrap": true
+        }
+    ]
+}

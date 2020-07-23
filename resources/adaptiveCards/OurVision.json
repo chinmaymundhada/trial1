@@ -1,0 +1,51 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.2",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "OUR VISION",
+            "weight": "Bolder",
+            "size": "Medium"
+        },
+        {
+            "type": "ImageSet",
+            "images": [
+                {
+                    "type": "Image",
+                    "size": "Large",
+                    "url": "https://www.tejgyan.org/homeassets/abouttgf/images/missing-link.png"
+                },
+                {
+                    "type": "Image",
+                    "size": "Large",
+                    "url":"https://www.tejgyan.org/homeassets/abouttgf/images/beyond-duality.png"
+                }
+            ]
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": 2,
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "Tejgyan helps in harmonizing with our true nature, the Self, thereby restoring balance in all aspects of life. It provides fulfillment and helps undertake the journey towards self-realization - the true purpose of human life. This is possible with Tejgyan due to a very simple reason. The experience of the ultimate truth is always available. The direct experience of this truth or self-realization is possible provided the right method is known. Tejgyan is that method, that understanding.",
+                            "wrap": true
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.OpenUrl",
+            "title": "Our Website",
+            "url": "https://www.tejgyan.org/Home"
+        }
+    ]
+}

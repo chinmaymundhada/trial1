@@ -1,0 +1,25 @@
+{
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "TextBlock",
+            "size": "Medium",
+            "weight": "Bolder",
+            "text": "LINK FOR DONATION"
+        },
+        {
+            "type": "TextBlock",
+            "text": "You can pay donation as per your convenience by visiting the link below ",
+            "wrap": true
+        }
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.2",
+    "actions": [
+        {
+            "type": "Action.OpenUrl",
+            "title": "Donation Link",
+            "url": "https://www.tejgyan.org/Donation"
+        }
+    ]
+}

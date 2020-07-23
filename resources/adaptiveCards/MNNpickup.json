@@ -1,0 +1,38 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.2",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "MNN Ashram",
+            "size": "Medium",
+            "weight": "Bolder"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Pick up from Kirkitwadi:",
+            "wrap": true
+        },
+        {
+            "type": "ImageSet",
+            "imageSize": "Large",
+            "images": [
+                {
+                    "type": "Image",
+                    "url": "https://www.tejgyan.org/homeassets/abouttgf/images/theAshram.png",
+                    "size": "Large"
+                }
+            ]
+        },
+        {
+            "type": "TextBlock",
+            "text": "From Kirkatwadi to Manan Ashram via Nandoshi Rd.\n\n16 min (5.0 km)\n16 min in current traffic\n\n\n1. Head east toward Kirkatwadi Village Rd\n2. Turn right onto Kirkatwadi Village Rd\n3. Slight right onto Sanaswadi Rd\n4. Turn left toward Rushikeshi Green Rays Rd/Sanas Nagar Gaonthan Rd\n5. Turn left onto Rushikeshi Green Rays Rd/Sanas Nagar Gaonthan Rd\n6. Turn right toward Manan ashram Rd\n7. Turn left onto Manan ashram Rd\n8. Sharp left\n9. Arrive at location: Manan Ashram\n",
+            "wrap": true
+        },
+        {
+            "type": "TextBlock",
+            "text": "For the best route in current traffic visit https://maps.app.goo.gl/8WwaUvwV4eesrEQ99"
+        }
+    ]
+}

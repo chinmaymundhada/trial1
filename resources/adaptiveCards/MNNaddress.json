@@ -1,0 +1,34 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.2",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "MNN Ashram",
+            "size": "Medium",
+            "weight": "Bolder"
+        },
+        {
+            "type": "TextBlock",
+            "text": "ADDRESS",
+            "wrap": true
+        },
+        {
+            "type": "ImageSet",
+            "imageSize": "large",
+            "images": [
+                {
+                    "type": "Image",
+                    "url": "https://www.tejgyan.org/homeassets/abouttgf/images/theAshram.png",
+                    "size": "large"
+                }
+            ]
+        },
+        {
+            "type": "TextBlock",
+            "text": "Survey No 43, Sinhagad Road, Kirkatwadi, Pune - 411024 (Kirkatwadi Phata Sanas Nagar Nandoshi Gaon)",
+            "wrap": true
+        }
+    ]
+}

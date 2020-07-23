@@ -1,0 +1,39 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.0",
+  "body": [
+    {
+      "type": "TextBlock",
+      "wrap": true,
+      "text": "Information."
+    },
+    {
+      "type": "ActionSet",
+      "actions": [
+        {
+          "type": "Action.ShowCard",
+          "title": "Latest Date",
+          "card": {
+            "type": "AdaptiveCard",
+            "body": [
+              {
+                "type": "TextBlock",
+                "text": "Date : 20/07/20"
+              }
+            ]
+          }
+        },
+        
+			  {
+		  "type": "Action.OpenUrl",
+		  "title": "Registration form link",
+		  "url": "https://tgf.tejgyan.org/healthRegistration.jsp."
+		}
+      ]
+	  }
+	
+  ]
+  }
+
+

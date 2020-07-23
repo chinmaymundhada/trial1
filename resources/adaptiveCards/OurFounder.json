@@ -1,0 +1,65 @@
+{
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "TextBlock",
+            "size": "Medium",
+            "weight": "Bolder",
+            "text": "OUR FOUNDER"
+        },
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "auto",
+                    "items": [
+                        {
+                            "type": "ImageSet",
+                            "images": [
+                                {
+                                    "type": "Image",
+                                    "size": "Medium",
+                                    "url": "https://www.tejgyan.org/homeassets/aboutfounder/images/founder.JPG"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Column",
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "weight": "Bolder",
+                            "text": "Tejguru Sirshree",
+                            "wrap": true
+                        },
+                        {
+                            "type": "TextBlock",
+                            "spacing": "None",
+                            "text": "Founded in 1999",
+                            "isSubtle": true,
+                            "wrap": true
+                        }
+                    ],
+                    "width": "stretch"
+                }
+            ]
+        },
+        {
+            "type": "TextBlock",
+            "text": "Tejgyan Foundation has been founded by Tejguru Sirshree. Sirshree's spiritual quest which began during his childhood, led him on a journey through various schools of thought and meditation practices. The overpowering desire to attain the truth made him relinquish his teaching job. After a long period of contemplation, his spiritual quest culminated in the attainment of the ultimate truth. Sirshree says, \"All paths that lead to the truth begin differently, but end in the same way-with understanding. Understanding is the whole thing.",
+            "wrap": true
+        }
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.2",
+    "actions": [
+        {
+            "type": "Action.OpenUrl",
+            "title": "Our Website",
+            "url": "https://www.tejgyan.org/Home"
+        }
+    ]
+}

@@ -1,0 +1,61 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.2",
+    "body": [
+        {
+            "type": "ColumnSet",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": 2,
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "OUR MISSION",
+                            "weight": "Bolder",
+                            "size": "Medium"
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "The mission of the Foundation is to create a highly evolved society.\n",
+                            "wrap": true,
+                            "weight":"Lighter"
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": "1)A society where individuals give top priority to self-realization and accessing consciousness first.",
+                            "isSubtle": true,
+                            "wrap": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "TextBlock",
+            "text": "2)A society where businesses exist as an expression of Self.\n",
+            "isSubtle": true,
+            "wrap": true
+        },
+        {
+            "type": "TextBlock",
+            "text": "3)A society where the key department in every government is the ministry of higher consciousness.\n.",
+            "isSubtle": true,
+            "wrap": true
+        },
+        {
+            "type": "TextBlock",
+            "text": "4)A society where all nationalities races and religions co-exist happily and resolve their differences through dialogue and vision",
+            "isSubtle": true,
+            "wrap": true
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.OpenUrl",
+            "title": "Our Website",
+            "url": "https://www.tejgyan.org/Home"
+        }
+    ]
+}

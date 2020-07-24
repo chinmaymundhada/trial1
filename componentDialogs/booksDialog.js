@@ -1,7 +1,11 @@
 const { WaterfallDialog, ComponentDialog } = require('botbuilder-dialogs');
 const { ConfirmPrompt, ChoicePrompt, DateTimePrompt, NumberPrompt, TextPrompt } = require('botbuilder-dialogs');
 const { DialogSet, DialogTurnStatus } = require('botbuilder-dialogs');
+const { CardFactory } = require('botbuilder');
 
+const FormCard = require('../resources/adaptiveCards/FormCard.json');
+const video = require('../resources/adaptiveCards/video.json');
+const CARDS = [video, FormCard];
 const CHOICE_PROMPT = 'CHOICE_PROMPT';
 const CONFIRM_PROMPT = 'CONFIRM_PROMPT';
 const TEXT_PROMPT = 'TEXT_PROMPT';
@@ -12,14 +16,15 @@ var endDialog = '';
 
 class BooksDialog extends ComponentDialog {
     constructor(conservsationState, userState) {
-        super('shravanDialog');
+        super('BooksDialog');
         this.addDialog(new TextPrompt(TEXT_PROMPT));
         this.addDialog(new ChoicePrompt(CHOICE_PROMPT));
         this.addDialog(new ConfirmPrompt(CONFIRM_PROMPT));
         this.addDialog(new NumberPrompt(NUMBER_PROMPT));
         this.addDialog(new DateTimePrompt(DATETIME_PROMPT));
         this.addDialog(new WaterfallDialog(WATERFALL_DIALOG, [
-            this.firstStep.bind(this) // Books Dialog Confirmation Pending
+            this.firstStep.bind(this), // Books Dialog Confirmation Pending
+            this.summaryStep.bind(this) // Results are added in the choice prompt
         ]));
         this.initialDialogId = WATERFALL_DIALOG;
     }
@@ -37,9 +42,11 @@ class BooksDialog extends ComponentDialog {
     async firstStep(step) {
         endDialog = false;
         // Running a prompt here means the next WaterfallStep will be run when the users response is received.
-        var msg = 'You have reached to end of Books Tab. Thanks for reaching us!!';
+        await step.context.sendActivity({
+            attachments: [CardFactory.adaptiveCard(CARDS[0])]
+        });
+        var msg = 'Thank You !';
         await step.context.sendActivity(msg);
-        endDialog = true;
         return await step.endDialog();
     }
 

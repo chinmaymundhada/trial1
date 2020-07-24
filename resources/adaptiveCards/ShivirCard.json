@@ -13,14 +13,14 @@
                         {
                             "type": "TextBlock",
                             "text": "SHIVIR NAME",
-                            "weight": "Bolder",
-                            "size": "Medium"
+                            "weight": "bolder",
+                            "size": "medium"
                         },
                         {
                             "type": "TextBlock",
                             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                            "isSubtle": true,
-                            "wrap": true
+                            "isSubtle": "true",
+                            "wrap": "true"
                         }
                     ]
                 }
@@ -67,7 +67,8 @@
                 "body": [
                     {
                         "type": "TextBlock",
-                        "text": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt"
+                        "text": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt",
+                        "wrap": "true"
                     }
                 ]
             }
@@ -80,7 +81,8 @@
                 "body": [
                     {
                         "type": "TextBlock",
-                        "text": "The mode of payment is either Online or In person"
+                        "text": "The mode of payment is either Online or In person",
+                        "wrap": "true"
                     }
                 ]
             }
@@ -93,7 +95,8 @@
                 "body": [
                     {
                         "type": "TextBlock",
-                        "text": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum"
+                        "text": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum",
+                        "wrap": "true"
                     }
                 ]
             }
@@ -106,7 +109,8 @@
                 "body": [
                     {
                         "type": "TextBlock",
-                        "text": "Everyone can apply for this Shivir"
+                        "text": "Everyone can apply for this Shivir",
+                        "wrap": "true"
                     }
                 ]
             }
@@ -119,7 +123,8 @@
                 "body": [
                     {
                         "type": "TextBlock",
-                        "text": "The donation for Shivir is Rs. 100000/-"
+                        "text": "The donation for Shivir is Rs. 100000/-",
+                        "wrap": "true"
                     }
                 ]
             }

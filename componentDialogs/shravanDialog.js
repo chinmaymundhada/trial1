@@ -3,7 +3,8 @@ const { ConfirmPrompt, ChoicePrompt, DateTimePrompt, NumberPrompt, TextPrompt } 
 const { DialogSet, DialogTurnStatus } = require('botbuilder-dialogs');
 const { CardFactory } = require('botbuilder');
 const FormCard = require('../resources/adaptiveCards/FormCard');
-const CARDS = [FormCard];
+const Shravan = require('../resources/adaptiveCards/Shravan.json');
+const CARDS = [Shravan, FormCard];
 
 const CHOICE_PROMPT = 'CHOICE_PROMPT';
 const CONFIRM_PROMPT = 'CONFIRM_PROMPT';
@@ -41,10 +42,11 @@ class ShravanDialog extends ComponentDialog {
     async firstStep(step) {
         endDialog = false;
         // Running a prompt here means the next WaterfallStep will be run when the users response is received.
-        var msg = 'You have reached to end of Shravan Tab. Thanks for Connecting!!';
+        await step.context.sendActivity({
+            attachments: [CardFactory.adaptiveCard(CARDS[0])]
+        });
+        var msg = 'Thank You !';
         await step.context.sendActivity(msg);
-        var msg1 = 'Thank You !';
-        await step.context.sendActivity(msg1);
         return await step.prompt(CONFIRM_PROMPT, 'Do you wish to continue?', ['yes', 'no']);
     }
 
@@ -56,7 +58,7 @@ class ShravanDialog extends ComponentDialog {
         } else if (step.result === false) {
             await step.context.sendActivity({
                 text: 'If you wish to get in touch with us ,Please fill in your contact details in the form link provided below',
-                attachments: [CardFactory.adaptiveCard(CARDS[0])]
+                attachments: [CardFactory.adaptiveCard(CARDS[1])]
             });
             var msg1 = 'Thankyou for connecting with us. Hope you have a great day ahead';
             await step.context.sendActivity(msg1);

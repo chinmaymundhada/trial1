@@ -1,0 +1,25 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.2",
+    "fallbackText": "This card requires Media to be viewed. Ask your platform to update to Adaptive Cards v1.1 for this and more!",
+    "body": [
+        {
+            "type": "Media",
+            "poster": "https://www.incimages.com/uploaded_files/image/1920x1080/getty_883231284_200013331818843182490_335833.jpg",
+            "sources": [
+                {
+                    "mimeType": "video/mp4",
+                    "url": "https://videos.dailymail.co.uk/video/1418450360/2013/11/1418450360_2881095249001_20131130-obamashopping.mp4"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.OpenUrl",
+            "title": "Learn more",
+            "url": "https://www.tejgyan.org/Home"
+        }
+    ]
+}

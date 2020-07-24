@@ -67,7 +67,7 @@ class TejgyanBot extends ActivityHandler {
         this.onMessage(async (context, next) => {
             await context.sendActivities([
                 { type: ActivityTypes.Typing },
-                { type: 'delay', value: 3000 }
+                { type: 'delay', value: 5000 }
             ]);
             const luisResult = await dispatchRecognizer.recognize(context);
             const intent = LuisRecognizer.topIntent(luisResult); // checking the top intent in the  LUIS

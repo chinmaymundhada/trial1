@@ -1,0 +1,24 @@
+{
+    "type": "AdaptiveCard",
+    "body": [
+        {
+            "type": "TextBlock",
+            "size": "Medium",
+            "weight": "Bolder",
+            "text": "Centers near me:"
+        },
+        {
+            "type": "Image",
+            "url": "https://fjaerestad.no/wp-content/uploads/2015/04/geolocation_and_google_maps.jpg"
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.OpenUrl",
+            "title": "Click here to get directions",
+            "url": "https://www.google.com/maps/@19.0942304,74.7419079,14z"
+        }
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.2"
+}

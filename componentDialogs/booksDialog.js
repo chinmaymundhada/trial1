@@ -47,7 +47,25 @@ class BooksDialog extends ComponentDialog {
         });
         var msg = 'Thank You !';
         await step.context.sendActivity(msg);
-        return await step.endDialog();
+        return await step.prompt(CONFIRM_PROMPT, 'Do you wish to continue?', ['yes', 'no']);
+    }
+
+    async summaryStep(step) {
+        console.log(step.result);
+        if (step.result === true) {
+            endDialog = true;
+            return await step.endDialog();
+        } else if (step.result === false) {
+            await step.context.sendActivity({
+                text: 'If you wish to get in touch with us ,Please fill in your contact details in the form link provided below',
+                attachments: [CardFactory.adaptiveCard(CARDS[1])]
+            });
+            var msg1 = 'Thankyou for connecting with us. Hope you have a great day ahead';
+            await step.context.sendActivity(msg1);
+
+            endDialog = false;
+            return await step.endDialog();
+        }
     }
 
     async isDialogComplete() {

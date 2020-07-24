@@ -23,8 +23,7 @@ class ShravanDialog extends ComponentDialog {
         this.addDialog(new NumberPrompt(NUMBER_PROMPT, this.pincodeValidator));
         this.addDialog(new DateTimePrompt(DATETIME_PROMPT));
         this.addDialog(new WaterfallDialog(WATERFALL_DIALOG, [
-            this.firstStep.bind(this),
-            this.summaryStep.bind(this) // ShravanDialog Confirmation Pending
+            this.firstStep.bind(this)
         ]));
         this.initialDialogId = WATERFALL_DIALOG;
     }
@@ -45,27 +44,8 @@ class ShravanDialog extends ComponentDialog {
         await step.context.sendActivity({
             attachments: [CardFactory.adaptiveCard(CARDS[0])]
         });
-        var msg = 'Thank You !';
-        await step.context.sendActivity(msg);
-        return await step.prompt(CONFIRM_PROMPT, 'Do you wish to continue?', ['yes', 'no']);
-    }
-
-    async summaryStep(step) {
-        console.log(step.result);
-        if (step.result === true) {
-            endDialog = true;
-            return await step.endDialog();
-        } else if (step.result === false) {
-            await step.context.sendActivity({
-                text: 'If you wish to get in touch with us ,Please fill in your contact details in the form link provided below',
-                attachments: [CardFactory.adaptiveCard(CARDS[1])]
-            });
-            var msg1 = 'Thankyou for connecting with us. Hope you have a great day ahead';
-            await step.context.sendActivity(msg1);
-
-            endDialog = false;
-            return await step.endDialog();
-        }
+        endDialog = true;
+        return await step.endDialog();
     }
 
     async isDialogComplete() {

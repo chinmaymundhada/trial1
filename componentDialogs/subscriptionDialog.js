@@ -25,8 +25,7 @@ class SubscriptionDialog extends ComponentDialog {
         this.addDialog(new WaterfallDialog(WATERFALL_DIALOG, [
             this.firstStep.bind(this), // Ask user for subcription he wants to know about
             this.programchoice.bind(this), // Show the list of events
-            this.answerToQuery.bind(this), // answer to question
-            this.summaryStep.bind(this)
+            this.answerToQuery.bind(this) // answer to question
 
         ]));
         this.initialDialogId = WATERFALL_DIALOG;
@@ -52,7 +51,7 @@ class SubscriptionDialog extends ComponentDialog {
     async firstStep(step) {
         endDialog = false;
         // Running a prompt here means the next WaterfallStep will be run when the users response is received.
-        return await step.prompt(CHOICE_PROMPT, 'What Subscription Details do you want to know', ['Magazines', 'Voice Of Happy Thoughts']);
+        return await step.prompt(CHOICE_PROMPT, 'Which Subscription are you looking for?', ['Magazines', 'Voice Of Happy Thoughts']);
     }
 
     async programchoice(step) {
@@ -71,32 +70,15 @@ class SubscriptionDialog extends ComponentDialog {
             await stepContext.context.sendActivity(msg);
         } else {
             // If no answers were returned from QnA Maker, reply with help.
-            var msg5 = 'Sorry we are unable to answer that question. You can put up your query in the form below to get a call from our team';
+            var msg5 = 'Sorry we are unable to answer this question. You can put up your query in the form below and our team will get in touch with you soon!';
             await stepContext.context.sendActivity(msg5);
             await stepContext.context.sendActivity({
                 text: '',
                 attachments: [CardFactory.adaptiveCard(CARDS[0])]
             });
         }
-        return await stepContext.prompt(CONFIRM_PROMPT, 'Do you wish to continue?', ['yes', 'no']);
-    }
-
-    async summaryStep(step) {
-        console.log(step.result);
-        if (step.result === true) {
-            endDialog = true;
-            return await step.endDialog();
-        } else if (step.result === false) {
-            await step.context.sendActivity({
-                text: 'If you wish to get in touch with us ,Please fill in your contact details in the form link provided below',
-                attachments: [CardFactory.adaptiveCard(CARDS[0])]
-            });
-            var msg1 = 'Thankyou for connecting with us. Hope you have a great day ahead';
-            await step.context.sendActivity(msg1);
-
-            endDialog = false;
-            return await step.endDialog();
-        }
+        endDialog = true;
+        return await stepContext.endDialog();
     }
 
     async isDialogComplete() {

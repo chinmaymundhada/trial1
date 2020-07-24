@@ -67,7 +67,7 @@ class TejgyanBot extends ActivityHandler {
         this.onMessage(async (context, next) => {
             await context.sendActivities([
                 { type: ActivityTypes.Typing },
-                { type: 'delay', value: 5000 }
+                { type: 'delay', value: 0 }
             ]);
             const luisResult = await dispatchRecognizer.recognize(context);
             const intent = LuisRecognizer.topIntent(luisResult); // checking the top intent in the  LUIS
@@ -125,6 +125,7 @@ class TejgyanBot extends ActivityHandler {
 
         // Switch case for current intent value.
         switch (currentIntent) {
+        // Shivir_and_Retreats Intent
         case 'Shivir_and_Retreats':
             console.log('Inside Shivir/Retreats Case');
             await this.conversationData.set(context, { endDialog: false });
@@ -135,7 +136,6 @@ class TejgyanBot extends ActivityHandler {
                 await this.sendSuggestedActions(context);
             }
             break;
-
         case 'MNN':
             console.log('Inside MNN Case');
             await this.conversationData.set(context, { endDialog: false });

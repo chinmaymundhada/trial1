@@ -24,8 +24,7 @@ class ProgramDialog extends ComponentDialog {
         this.addDialog(new DateTimePrompt(DATETIME_PROMPT));
         this.addDialog(new WaterfallDialog(WATERFALL_DIALOG, [
             this.firstStep.bind(this), // Chossing the program for requirement
-            this.programchoice.bind(this), // providing details of Program
-            this.summaryStep.bind(this)
+            this.programchoice.bind(this)
         ]));
         this.initialDialogId = WATERFALL_DIALOG;
     }
@@ -54,62 +53,38 @@ class ProgramDialog extends ComponentDialog {
                 text: 'Stress Free Life',
                 attachments: [CardFactory.adaptiveCard(CARDS[0])]
             });
-            var msg = 'Thank You !';
-            await step.context.sendActivity(msg);
-            return await step.prompt(CONFIRM_PROMPT, 'Do you wish to continue?', ['yes', 'no']);
+            endDialog = true;
+            return await step.endDialog();
 
         case 'Inner 90 & Hidden Infinity':
             await step.context.sendActivity({
                 text: 'Inner 90, Hidden Infinity ',
                 attachments: [CardFactory.adaptiveCard(CARDS[0])]
             });
-            var msg1 = 'Thank You !';
-            await step.context.sendActivity(msg1);
-            return await step.prompt(CONFIRM_PROMPT, 'Do you wish to continue?', ['yes', 'no']);
+            endDialog = true;
+            return await step.endDialog();
 
         case 'Women Empowerment':
             await step.context.sendActivity({
                 text: 'Women Empowerment',
                 attachments: [CardFactory.adaptiveCard(CARDS[0])]
             });
-            var msg2 = 'Thank You !';
-            await step.context.sendActivity(msg2);
-            return await step.prompt(CONFIRM_PROMPT, 'Do you wish to continue?', ['yes', 'no']);
-
+            endDialog = true;
+            return await step.endDialog();
         case 'Vichar Niyam Abhiyan':
             await step.context.sendActivity({
                 text: 'Vichar Niyam Abhiyan',
                 attachments: [CardFactory.adaptiveCard(CARDS[0])]
             });
-            var msg3 = 'Thank You !';
-            await step.context.sendActivity(msg3);
-            return await step.prompt(CONFIRM_PROMPT, 'Do you wish to continue?', ['yes', 'no']);
+            endDialog = true;
+            return await step.endDialog();
 
         case 'Inner Beauty':
             await step.context.sendActivity({
                 text: 'Inner Beauty',
                 attachments: [CardFactory.adaptiveCard(CARDS[0])]
             });
-            var msg4 = 'Thank You !';
-            await step.context.sendActivity(msg4);
-            return await step.prompt(CONFIRM_PROMPT, 'Do you wish to continue?', ['yes', 'no']);
-        }
-    }
-
-    async summaryStep(step) {
-        console.log(step.result);
-        if (step.result === true) {
             endDialog = true;
-            return await step.endDialog();
-        } else if (step.result === false) {
-            await step.context.sendActivity({
-                text: 'If you wish to get in touch with us ,Please fill in your contact details in the form link provided below',
-                attachments: [CardFactory.adaptiveCard(CARDS[1])]
-            });
-            var msg1 = 'Thankyou for connecting with us. Hope you have a great day ahead';
-            await step.context.sendActivity(msg1);
-
-            endDialog = false;
             return await step.endDialog();
         }
     }

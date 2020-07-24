@@ -28,7 +28,7 @@ class TGFcentresDialog extends ComponentDialog {
             this.TGFcentrechoice.bind(this), // Get choice for region
             this.TGFcentreDetails.bind(this),
             this.TGFcentreDetails1.bind(this), // Show the region
-            this.summaryStep.bind(this)
+            this.TGFcentreDetails2.bind(this)
         ]));
         this.initialDialogId = WATERFALL_DIALOG;
         const qnaMaker = new QnAMaker({
@@ -52,7 +52,7 @@ class TGFcentresDialog extends ComponentDialog {
     async firstStep(step) {
         endDialog = false;
         // Running a prompt here means the next WaterfallStep will be run when the users response is received.
-        return await step.prompt(CHOICE_PROMPT, 'Which country are you from?', ['India', 'Canada', 'Australia', 'USA']);
+        return await step.prompt(CHOICE_PROMPT, 'Location of the required shivir/retreat ?', ['India', 'International']);
     }
 
     async TGFcentrechoice(step) {
@@ -60,12 +60,8 @@ class TGFcentresDialog extends ComponentDialog {
         switch (step.result.value) {
         case 'India':
             return await step.prompt(CHOICE_PROMPT, 'Choose one mode to get the location of shivir/retreat?', ['Centres near me', 'Centres by pin code', 'Centres by city name']);
-        case 'Australia':
-            return await step.prompt(CHOICE_PROMPT, 'Choose one mode to get the location of shivir/retreat?', ['Centres near me', 'Centres by pin code', 'Centres by city name']);
-        case 'USA':
-            return await step.prompt(CHOICE_PROMPT, 'Choose one mode to get the location of shivir/retreat?', ['Centres near me', 'Centres by pin code', 'Centres by city name']);
-        case 'Canada':
-            return await step.prompt(CHOICE_PROMPT, 'Choose one mode to get the location of shivir/retreat?', ['Centres near me', 'Centres by pin code', 'Centres by city name']);
+        case 'International':
+            return await step.prompt(CHOICE_PROMPT, 'Which country are you from?', ['Canada', 'Australia', 'USA']);
         }
     }
 
@@ -82,47 +78,76 @@ class TGFcentresDialog extends ComponentDialog {
         case 'Centres by pin code':
             return await step.prompt(NUMBER_PROMPT, 'Enter the pincode of your city(Pincode is 6-digit unique identification number of your city)');
         case 'Centres by city name':
-            return await step.prompt(TEXT_PROMPT, 'Enter the district to know about the Tejasthan located in the respective district');
+            return await step.prompt(TEXT_PROMPT, 'Enter the your district to know Tejasthan around you');
+        case 'Canada':
+            return await step.prompt(CHOICE_PROMPT, 'Which option would you prefer?', ['Centres near me', 'Centres by pin code', 'Centres by city name']);
+        case 'Australia':
+            return await step.prompt(CHOICE_PROMPT, 'Which option would you prefer?', ['Centres near me', 'Centres by pin code', 'Centres by city name']);
+        case 'USA':
+            return await step.prompt(CHOICE_PROMPT, 'Which option would you prefer?', ['Centres near me', 'Centres by pin code', 'Centres by city name']);
         }
     }
 
     async TGFcentreDetails1(stepContext) {
         console.log(stepContext.result.value);
+        switch (stepContext.result.value) {
+        case 'Centres near me':
+            await stepContext.context.sendActivity({
+                text: '',
+                attachments: [CardFactory.adaptiveCard(CARDS[1])]
+            });
+            endDialog = true;
+            return await stepContext.endDialog();
+        case 'Centres by pin code':
+            return await stepContext.prompt(NUMBER_PROMPT, 'Enter the pincode of your city(Pincode is 6-digit unique identification number of your city)');
+        case 'Centres by city name':
+            return await stepContext.prompt(TEXT_PROMPT, 'Enter the your district to know Tejasthan around you');
+        }
         stepContext.values.indiaValues = stepContext.result;
         var result = await this.qnaMaker.getAnswers(stepContext.context);
         if (result[0]) {
             var msg4 = `${ result[0].answer } `;
             await stepContext.context.sendActivity(msg4);
-            return await stepContext.prompt(CONFIRM_PROMPT, 'Do you wish to continue?', ['yes', 'no']);
+            endDialog = true;
+            return await stepContext.endDialog();
         } else {
             // If answer is not returned by QnA but  pincode is entered
             if (typeof (stepContext.result) === 'number') {
                 var msg3 = 'No Tejasthan is located in city with this pincode or your pincode is invalid';
                 await stepContext.context.sendActivity(msg3);
-                return await stepContext.prompt(CONFIRM_PROMPT, 'Do you wish to continue?', ['yes', 'no']);
+                endDialog = true;
+                return await stepContext.endDialog();
             } else {
-                var msg5 = 'No Tejasthan is located in the specified city';
+                var msg5 = 'No Tejasthan is located in the city';
                 await stepContext.context.sendActivity(msg5);
-                return await stepContext.prompt(CONFIRM_PROMPT, 'Do you wish to continue?', ['yes', 'no']);
+                endDialog = true;
+                return await stepContext.endDialog();
             }
         }
     }
 
-    async summaryStep(step) {
-        console.log(step.result);
-        if (step.result === true) {
+    async TGFcentreDetails2(stepContext) {
+        console.log(stepContext.result.value);
+        stepContext.values.internationalValues = stepContext.result;
+        var result = await this.qnaMaker.getAnswers(stepContext.context);
+        if (result[0]) {
+            var msg4 = `${ result[0].answer } `;
+            await stepContext.context.sendActivity(msg4);
             endDialog = true;
-            return await step.endDialog();
-        } else if (step.result === false) {
-            await step.context.sendActivity({
-                text: 'If you wish to get in touch with us ,Please fill in your contact details in the form link provided below',
-                attachments: [CardFactory.adaptiveCard(CARDS[0])]
-            });
-            var msg1 = 'Thankyou for connecting with us. Hope you have a great day ahead';
-            await step.context.sendActivity(msg1);
-
-            endDialog = false;
-            return await step.endDialog();
+            return await stepContext.endDialog();
+        } else {
+            // If no answers were returned from QnA Maker, reply with help.
+            if (typeof (stepContext.result) === 'number') {
+                var msg3 = 'No Tejsthan is located in city with this pincode or your pincode is invalid';
+                await stepContext.context.sendActivity(msg3);
+                endDialog = true;
+                return await stepContext.endDialog();
+            } else {
+                var msg5 = 'No Tejsthan is located in the city';
+                await stepContext.context.sendActivity(msg5);
+                endDialog = true;
+                return await stepContext.endDialog();
+            }
         }
     }
 

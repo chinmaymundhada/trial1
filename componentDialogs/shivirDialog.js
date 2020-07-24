@@ -18,7 +18,7 @@ class ShivirDialog extends ComponentDialog {
         this.addDialog(new TextPrompt(TEXT_PROMPT));
         this.addDialog(new ChoicePrompt(CHOICE_PROMPT));
         this.addDialog(new ConfirmPrompt(CONFIRM_PROMPT));
-        this.addDialog(new NumberPrompt(NUMBER_PROMPT));
+        this.addDialog(new NumberPrompt(NUMBER_PROMPT, this.noOfParticipantsValidator));
         this.addDialog(new DateTimePrompt(DATETIME_PROMPT));
         this.addDialog(new WaterfallDialog(WATERFALL_DIALOG, [
             this.firstStep.bind(this), // Ask user for selection of region
@@ -47,16 +47,16 @@ class ShivirDialog extends ComponentDialog {
     async firstStep(step) {
         endDialog = false;
         // Running a prompt here means the next WaterfallStep will be run when the users response is received.
-        return await step.prompt(CHOICE_PROMPT, 'In which region Shivir are you looking for?', ['India', 'International']);
+        return await step.prompt(CHOICE_PROMPT, 'Select one region please:', ['India', 'International']);
     }
 
     async shivirchoice(step) {
         console.log(step.result.value);
         switch (step.result.value) {
         case 'India':
-            return await step.prompt(CHOICE_PROMPT, 'Which Shivir are you looking for?', ['Maha Ashmani Param Gyan Shivir', 'Mini Maha Asmani', 'Sampoorna Swasth Shivir', 'Dhyan Mandir', 'Family Shivir', 'Open Day/Anekant Shivir', 'Online Retreats', 'Parenting Shivir', 'Husband Wife Shivir']);
+            return await step.prompt(CHOICE_PROMPT, 'Which shivir are you interested in?', ['Maha Ashmani Param Gyan Shivir', 'Mini Maha Asmani', 'Sampoorna Swasth Shivir', 'Dhyan Mandir', 'Family Shivir', 'Open Day/Anekant Shivir', 'Online Retreats', 'Parenting Shivir', 'Husband Wife Shivir']);
         case 'International':
-            return await step.prompt(CHOICE_PROMPT, 'Which Shivir are you looking for?', ['Maha Ashmani Shivir', 'Mini Maha Asmani Shivir', 'International Dhyan Mandir', 'International Family Shivir']);
+            return await step.prompt(CHOICE_PROMPT, 'Which shivir are you interested in?', ['Maha Ashmani Shivir', 'Mini Maha Asmani Shivir', 'International Dhyan Mandir', 'International Family Shivir']);
         }
     }
 
@@ -153,7 +153,7 @@ class ShivirDialog extends ComponentDialog {
         console.log(step.result.value);
         switch (step.result.value) {
         case 'Regular Process':
-            return await step.prompt(CHOICE_PROMPT, 'Which Shivir are you looking for?', ['Sampoorna Laksha Shivir(SLS)', 'Foundation Truth(FT)', 'Bright Responsibility Shivir(BRB)', 'Maha Asmani Shivir']);
+            return await step.prompt(CHOICE_PROMPT, 'Which shivir are you interested in?', ['Sampoorna Laksha Shivir(SLS)', 'Foundation Truth(FT)', 'Bright Responsibility Shivir(BRB)', 'Maha Asmani Shivir']);
         case 'At Manan Ashram':
             await step.context.sendActivity({
                 text: 'Maha Ashmani Shivir At Manan Ashram',
@@ -238,7 +238,7 @@ class ShivirDialog extends ComponentDialog {
             endDialog = true;
             return await step.endDialog();
         case 'Maha Asmani Shivir':
-            return await step.prompt(CHOICE_PROMPT, 'Where do you want to attend the Shivir?', ['At MaNaN Ashram', 'Any other cities']);
+            return await step.prompt(CHOICE_PROMPT, 'Which region do you prefer for attending the shivir?', ['At MaNaN Ashram', 'Any other cities']);
         }
     }
 

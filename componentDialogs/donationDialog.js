@@ -52,16 +52,16 @@ class DonationDialog extends ComponentDialog {
     async firstStep(step) {
         endDialog = false;
         // Running a prompt here means the next WaterfallStep will be run when the users response is received.
-        return await step.prompt(CHOICE_PROMPT, 'Where do you want to make donation ?', ['Mobile Application', 'TGF Website']);
+        return await step.prompt(CHOICE_PROMPT, 'What method do you prefer to make donation ?', ['Mobile Application', 'TGF Website']);
     }
 
     async PaymentChoice(step) {
         console.log(step.result.value);
         switch (step.result.value) {
         case 'Mobile Application':
-            return await step.prompt(CHOICE_PROMPT, 'You can choose any of this', ['Payment Link', 'FAQs']);
+            return await step.prompt(CHOICE_PROMPT, 'You can choose any one of the options: ', ['Payment Link', 'FAQs']);
         case 'TGF Website':
-            return await step.prompt(CHOICE_PROMPT, 'You can choose any of this', ['Payment Link', 'FAQs']);
+            return await step.prompt(CHOICE_PROMPT, 'You can choose any one of the options:', ['Payment Link', 'FAQs']);
         }
     }
 
@@ -76,7 +76,7 @@ class DonationDialog extends ComponentDialog {
             endDialog = true;
             return await step.endDialog();
         case 'FAQs':
-            return await step.prompt(TEXT_PROMPT, 'Enter any query you have');
+            return await step.prompt(TEXT_PROMPT, 'Please enter your query here:');
         }
     }
 
@@ -90,7 +90,7 @@ class DonationDialog extends ComponentDialog {
             endDialog = true;
             return await stepContext.endDialog();
         } else {
-            var msg5 = 'Sorry we are unable to answer that question. You can put up your query in the form below to get a call from our team';
+            var msg5 = 'Sorry we are unable to answer this question. You can put up your query in the form below and our team will get in touch with you soon!';
             await stepContext.context.sendActivity(msg5);
             await stepContext.context.sendActivity({
                 text: '',

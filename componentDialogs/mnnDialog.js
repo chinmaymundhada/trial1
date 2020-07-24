@@ -28,8 +28,7 @@ class MNNDialog extends ComponentDialog {
         this.addDialog(new DateTimePrompt(DATETIME_PROMPT));
         this.addDialog(new WaterfallDialog(WATERFALL_DIALOG, [
             this.firstStep.bind(this),
-            this.TGFcentrechoice.bind(this),
-            this.summaryStep.bind(this)
+            this.TGFcentrechoice.bind(this)
         ]));
         this.initialDialogId = WATERFALL_DIALOG;
     }
@@ -47,7 +46,7 @@ class MNNDialog extends ComponentDialog {
     async firstStep(step) {
         endDialog = false;
         // Running a prompt here means the next WaterfallStep will be run when the users response is received.
-        return await step.prompt(CHOICE_PROMPT, 'What do you want to know about MNN?', ['Address', 'Accomodation', 'How to reach', 'Pick from Kirkitwadi']);
+        return await step.prompt(CHOICE_PROMPT, 'Details of Manan Ashram are below, please select any option to know more: ', ['Address', 'Accomodation', 'How to reach', 'Pick from Kirkitwadi']);
     }
 
     async TGFcentrechoice(step) {
@@ -58,53 +57,31 @@ class MNNDialog extends ComponentDialog {
                 text: '',
                 attachments: [CardFactory.adaptiveCard(CARDS[0])]
             });
-            var msg = 'Thank You !';
-            await step.context.sendActivity(msg);
-            return await step.prompt(CONFIRM_PROMPT, 'Do you wish to continue?', ['yes', 'no']);
+            endDialog = true;
+            return await step.endDialog();
 
         case 'Address':
             await step.context.sendActivity({
                 text: '',
                 attachments: [CardFactory.adaptiveCard(CARDS[1])]
             });
-            var msg1 = 'Thank You !';
-            await step.context.sendActivity(msg1);
-            return await step.prompt(CONFIRM_PROMPT, 'Do you wish to continue?', ['yes', 'no']);
+            endDialog = true;
+            return await step.endDialog();
 
         case 'How to reach':
             await step.context.sendActivity({
                 text: '',
                 attachments: [CardFactory.adaptiveCard(CARDS[2])]
             });
-            var msg2 = 'Thank You !';
-            await step.context.sendActivity(msg2);
-            return await step.prompt(CONFIRM_PROMPT, 'Do you wish to continue?', ['yes', 'no']);
+            endDialog = true;
+            return await step.endDialog();
 
         case 'Pick from Kirkitwadi':
             await step.context.sendActivity({
                 text: '',
                 attachments: [CardFactory.adaptiveCard(CARDS[3])]
             });
-            var msg3 = 'Thank You !';
-            await step.context.sendActivity(msg3);
-            return await step.prompt(CONFIRM_PROMPT, 'Do you wish to continue?', ['yes', 'no']);
-        }
-    }
-
-    async summaryStep(step) {
-        console.log(step.result);
-        if (step.result === true) {
             endDialog = true;
-            return await step.endDialog();
-        } else if (step.result === false) {
-            await step.context.sendActivity({
-                text: 'If you wish to get in touch with us ,Please fill in your contact details in the form link provided below',
-                attachments: [CardFactory.adaptiveCard(CARDS[4])]
-            });
-            var msg1 = 'Thankyou for connecting with us. Hope you have a great day ahead';
-            await step.context.sendActivity(msg1);
-
-            endDialog = false;
             return await step.endDialog();
         }
     }

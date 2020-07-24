@@ -136,6 +136,7 @@ class TejgyanBot extends ActivityHandler {
                 await this.sendSuggestedActions(context);
             }
             break;
+        // MNN Intent
         case 'MNN':
             console.log('Inside MNN Case');
             await this.conversationData.set(context, { endDialog: false });
@@ -146,7 +147,7 @@ class TejgyanBot extends ActivityHandler {
                 await this.sendSuggestedActions(context);
             }
             break;
-
+        // Sentimental Intent
         case 'Sentimental':
             console.log('Inside Sentimental Case');
             await this.conversationData.set(context, { endDialog: false });
@@ -157,7 +158,7 @@ class TejgyanBot extends ActivityHandler {
                 await this.sendSuggestedActions(context);
             }
             break;
-
+        // TGF_Whatsapp_and_Telegram Intent
         case 'TGF_WhatsApp_and_Telegram':
             console.log('Inside TGF Whatsapp and Telegram Case');
             await this.conversationData.set(context, { endDialog: false });
@@ -168,7 +169,7 @@ class TejgyanBot extends ActivityHandler {
                 await this.sendSuggestedActions(context);
             }
             break;
-
+        // Subscription Intent
         case 'Subscription':
             console.log('Inside Subscription Case');
             await this.conversationData.set(context, { endDialog: false });
@@ -179,7 +180,7 @@ class TejgyanBot extends ActivityHandler {
                 await this.sendSuggestedActions(context);
             }
             break;
-
+        // About_TGF intent
         case 'About_TGF':
             console.log('Inside About TGF case');
             await this.conversationData.set(context, { endDialog: false });
@@ -190,7 +191,7 @@ class TejgyanBot extends ActivityHandler {
                 await this.sendSuggestedActions(context);
             }
             break;
-
+        // Voice_of_Happy_Thoughts Intent
         case 'Voice_of_Happy_Thoughts':
             console.log('Inside Voice of Happy Thoughs Case');
             await this.conversationData.set(context, { endDialog: false });
@@ -201,7 +202,7 @@ class TejgyanBot extends ActivityHandler {
                 await this.sendSuggestedActions(context);
             }
             break;
-
+        // Programs Intent
         case 'Programs':
             console.log('Inside Programs Case');
             await this.conversationData.set(context, { endDialog: false });
@@ -212,7 +213,7 @@ class TejgyanBot extends ActivityHandler {
                 await this.sendSuggestedActions(context);
             }
             break;
-
+        // Upcoming_Events Intent
         case 'Upcoming_Events':
             console.log('Inside Programs Case');
             await this.conversationData.set(context, { endDialog: false });
@@ -223,7 +224,7 @@ class TejgyanBot extends ActivityHandler {
                 await this.sendSuggestedActions(context);
             }
             break;
-
+        // TGF_centres Intent
         case 'TGF_centres':
             console.log('Inside TGF centres Case');
             await this.conversationData.set(context, { endDialog: false });
@@ -234,7 +235,7 @@ class TejgyanBot extends ActivityHandler {
                 await this.sendSuggestedActions(context);
             }
             break;
-
+        // Shravan Intent
         case 'Shravan':
             console.log('Inside Shravan Case');
             await this.conversationData.set(context, { endDialog: false });
@@ -245,7 +246,7 @@ class TejgyanBot extends ActivityHandler {
                 await this.sendSuggestedActions(context);
             }
             break;
-
+        // Books Intent
         case 'Books':
             console.log('Inside Book Case');
             await this.conversationData.set(context, { endDialog: false });
@@ -256,7 +257,7 @@ class TejgyanBot extends ActivityHandler {
                 await this.sendSuggestedActions(context);
             }
             break;
-
+        // Donation Intent
         case 'Donation':
             console.log('Inside Donation Case');
             await this.conversationData.set(context, { endDialog: false });
@@ -267,7 +268,7 @@ class TejgyanBot extends ActivityHandler {
                 await this.sendSuggestedActions(context);
             }
             break;
-
+        // Form_for_Query Intent
         case 'Form_for_Query':
             console.log('Inside Form Case');
             await this.conversationData.set(context, { endDialog: false });
@@ -278,7 +279,7 @@ class TejgyanBot extends ActivityHandler {
                 await this.sendSuggestedActions(context);
             }
             break;
-
+        // None Intent
         default:
             console.log('Did not match any case');
             // var msg = 'You have entered invalid option. You are requested to select the option from below choices';
